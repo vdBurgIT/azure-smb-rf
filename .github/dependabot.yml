@@ -1,0 +1,66 @@
+# Dependency updates and security PRs. Weekly, small updates grouped into one PR.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+  - package-ecosystem: "npm"
+    directory: "/management-console/web"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+  - package-ecosystem: "docker"
+    directory: "/management-console/api"
+    schedule:
+      interval: "weekly"
+    ignore:
+      # Stay on the Node LTS line; a major is a deliberate upgrade.
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: "docker"
+    directory: "/management-console/web"
+    schedule:
+      interval: "weekly"
+    ignore:
+      # Stay on the Node LTS line; a major is a deliberate upgrade.
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: "docker"
+    directory: "/management-console/worker"
+    schedule:
+      interval: "weekly"
+    ignore:
+      # Stay on the Node LTS line; a major is a deliberate upgrade.
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: "docker"
+    directory: "/mcp/azure-pricing-mcp"
+    schedule:
+      interval: "weekly"
+    ignore:
+      # Stay on the Node LTS line; a major is a deliberate upgrade.
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: "docker"
+    directory: "/mcp/drawio-mcp-server"
+    schedule:
+      interval: "weekly"
+    ignore:
+      # Stay on the Node LTS line; a major is a deliberate upgrade.
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      actions:
+        patterns: ["*"]
